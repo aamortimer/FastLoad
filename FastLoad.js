@@ -12,7 +12,7 @@ var FastLoad = function(nav, body) {
   // function to load the page content
   load_page_content = function(ele, body) {
     var link = $(ele),
-        href = link.attr('href'),
+        href = link.attr('href').replace(' ', '%20'),
         title = link.attr('title'),
         container = $(body);
 
