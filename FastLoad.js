@@ -1,4 +1,4 @@
-var FastLoad = function(nav, body) {
+var FastLoad = function(ele, body) {
   // do nothing if pushState is not supported
   if (typeof window.history.pushState !== "function") {
     return true;
@@ -45,8 +45,10 @@ var FastLoad = function(nav, body) {
   });
 
   // code to load page content 
-  $(nav).on('click', function(e) {
-    e.preventDefault();
-    return load_page_content(this,body);
+  $(ele).on('click', function(e) {
+    if (this.hostname === location.hostname) {
+      e.preventDefault();
+      return load_page_content(this,body);
+    }
   });
 }
